@@ -6,7 +6,9 @@ This is used to provide suggestions to cover 100% of the target molecule
 
 notation for the following:
 p:   number of features.
+number of nucleotides
 M:   number of alternatives.
+number of regions
 
 
 This function takes in
@@ -15,11 +17,17 @@ X:        the design matrix for linear regression model (M x p)
 IN:       index set for all alternatives (M x 2)
 theta_0:  prior for the linear regression parameters (p x 1)
 MVar:     measurement variance (scalar)
+a good estimate of the variance -- variance of energies
 C:        prior covariance matrix for theta
-lambda:   regularization parameter       
+along diagonals are variances
+sq rt diagonal will tell us the confidence on the theta_0
+lambda:   regularization parameter
+calculated via cross validation or validation??
+units are squared energy
+
 options:  a structure containing
  epsilon:  calculation precision
- gamma:    the forgetting factor for lea	st squares, default is 1 
+ gamma:    the forgetting factor for least squares, default is 1 
  xi,eta:   the parameters for beta priors
  flipN:    the number of fliping groups
  cases:    number of MC simulation to estimate lasso estimator covariance matrix
